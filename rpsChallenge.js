@@ -13,9 +13,6 @@ function getComputerChoice() {
 //Player***
 //create a function to the Player
 //player enter only 'rock', 'paper', 'scissors' through PROMPT
-//player accept accept lower/upper case
-//players input print in console
-//if player enter invalid answer, print invalid answer consider it as loss
 
 function getPlayerChoice() {
   return prompt("Enter your choice Rock, Paper, Scissors");
@@ -34,21 +31,15 @@ let playerScore = 0;
 // Increment the humanScore or computerScore variable based on the round winner.
 
 function playRound(playerChoice, computerChoice) {
-  console.log(`Player Choose: ${playerChoice}`)
-  console.log(`Computer Choose: ${computerChoice}`)
+  console.log(`Player Choose: ${playerChoice}`);
   playerChoice = playerChoice?.trim().toLowerCase();
-  if (
-    !playerChoice ||
-    playerChoice.trim() === "" ||
-    playerChoice === null
-  ) {
-    console.log("Invalid Input")
-  }
-  else {
+  if (!playerChoice || playerChoice.trim() === "" || playerChoice === null) {
+    console.log("Invalid Input");
+  } else {
+    console.log(`Computer Choose: ${computerChoice}`);
     if (playerChoice === computerChoice) {
-      console.log("its a tie")
-    }
-    else if (
+      console.log("its a tie");
+    } else if (
       (playerChoice === "rock" && computerChoice === "scissors") ||
       (playerChoice === "paper" && computerChoice === "rock") ||
       (playerChoice === "scissors" && computerChoice === "paper")
@@ -57,11 +48,37 @@ function playRound(playerChoice, computerChoice) {
       playerScore++;
     } else {
       console.log(`Computers win, (${computerChoice} beat ${playerChoice})`);
-      computerScore++
+      computerScore++;
     }
+  }
+  console.log(`player score: ${playerScore}`);
+  console.log(`computer score: ${computerScore}`);
+}
+
+function playGame() {
+  for (i = 1; i <= 5; i++) {
+    console.log(" ");
+    const getPlayer = getPlayerChoice();
+    const getComputer = getComputerChoice();
+    playRound(getPlayer, getComputer);
+  }
+  if (playerScore === computerScore) {
+    return console.log(`
+
+      DRAW!!`);
+  } else if (playerScore > computerScore) {
+    return console.log(`
+
+      Congrats you won! 
+      PLAYER SCORE: ${playerScore}/ COMPUTER SCORE: ${computerScore}`,
+    );
+  } else {
+    return console.log(`
+
+      Better luck next time! Computer's Won, 
+      COMPUTER SCORE: ${computerScore}/ PLAYER SCORE: ${playerScore}`,
+    );
   }
 }
 
-const getPlayer = getPlayerChoice();
-const getComputer = getComputerChoice();
-playRound(getPlayer, getComputer);
+playGame();
