@@ -1,40 +1,63 @@
-//Computer***
-//create a function to the computer
-//computer have three choices 'rock', 'paper', 'scissors' only
-//computer's get random choices
-//return 1 random choices.
-//test the return values in console.
+//this is a rock paper scissor challenge
+//this game will be played against the computer.
+
+//Computer side randomly returns “rock”, “paper” or “scissors”.
+//use Math.floor Math.random *3 to get a random number from 1 to 3
+//use if else statement to convert 1-3 into string
+//if math random is 1 choice is rock and so on.
 
 function getComputerChoice() {
-  let computerChoices = ["rock", "paper", "scissors"];
-  let randomIndex = Math.floor(Math.random() * computerChoices.length);
-  return computerChoices[randomIndex];
+  let choice = Math.floor(Math.random() * 3);
+  if (choice === 0) {
+    return "rock";
+  } else if (choice === 1) {
+    return "paper";
+  } else choice === 2;
+  return "scissors";
 }
 console.log(getComputerChoice());
 
-//Player***
-//create a function to the Player
-//player enter only 'rock', 'paper', 'scissors' through PROMPT
-//player accept accept lower/upper case
-//players input print in console
-//if player enter invalid answer, print invalid answer consider it as loss
+//takes the user choice and return it
+//create a function getPlayerChoice
+//take the user input and return it
 
 function getPlayerChoice() {
-  let userInput = prompt("Enter your choice Rock, Paper, Scissors");
-  userInput = userInput?.trim().toLowerCase();
-  if (!userInput) {
-    console.log("Invalid Input");
-    return null;
+  return prompt("Lets Play!: ROCK, PAPER OR SCISSORs");
+}
+
+//declare two new variables for the player and computer score
+let playerScore = 0;
+let computerSCore = 0;
+
+//let play
+//create a function playRound
+//that takes the getPlayerChoice & getComputerChoice as arguments
+//increment the score and announce the winner!
+
+function playRound(playerChoice, computerChoice) {
+  playerChoice = playerChoice?.trim().toLowerCase();
+  if (
+    (playerChoice !== "rock" &&
+      playerChoice !== "paper" &&
+      playerChoice !== "scissors") ||
+    playerChoice.trim() === "" ||
+    playerChoice === null
+  )
+    return console.log("Invalid Choice");
+  if (playerChoice === computerChoice) {
+    console.log("Its a tie");
   } else if (
-    userInput === "rock" ||
-    userInput === "paper" ||
-    userInput === "scissors"
+    (playerChoice === "rock" && computerChoice === "scissors") ||
+  (playerChoice === "paper" && computerChoice === "rock") ||
+  (playerChoice === "scissors" && computerChoice === "paper")
   ) {
-    console.log(userInput);
-    return userInput;
+    console.log(`You Won(${playerChoice} beat ${computerChoice})`);
+    console.log(playerScore++);
   } else {
-    console.log("Invalid Input");
-    return null;
+    console.log(`You Loss(${computerChoice} beat ${playerChoice})`);
+    console.log(computerSCore++);
   }
 }
-getPlayerChoice();
+const computersGet = getComputerChoice();
+const playersGet = getPlayerChoice();
+playRound(playersGet, computersGet);
