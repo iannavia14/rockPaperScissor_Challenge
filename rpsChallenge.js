@@ -1,5 +1,5 @@
-// computer side
-// computer randomly return rock or paper or scissors.
+//computer side
+//computer randomly return rock or paper or scissors.
 function getComputerChoice() {
   let choice = Math.floor(Math.random() * 3);
   if (choice === 0) return "rock";
@@ -7,8 +7,6 @@ function getComputerChoice() {
   else return "scissors";
 }
 
-//player side
-//return players input
 const getPlayerInput = () => prompt("Enter Rock or Paper or Scissors");
 
 //return getPlayerInput case-insensitve
@@ -30,11 +28,11 @@ function getPlayerChoice(input) {
 
 const getValidPlayerChoice = () => getPlayerChoice(getPlayerInput());
 
+//Play and scoring
 function playGame() {
   let playerScore = 0;
   let computerScore = 0;
 
-//Play and scoring
 function playRound(playerChoice, computerChoice) {
   console.log("Player choose   : " + playerChoice);
   console.log("Computer choose : " + computerChoice);
@@ -73,3 +71,5 @@ function playRound(playerChoice, computerChoice) {
 }
 
 playGame();
+
+console.log("Game Over. Refresh the page to play again.");
