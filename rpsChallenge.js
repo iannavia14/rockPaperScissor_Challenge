@@ -9,7 +9,7 @@ const title = document.querySelector("#title");
 const playerScores = document.querySelector("#playerScores");
 const computerScores = document.querySelector("#computerScores");
 
-// let gameActive = true
+let gameActive = true;
 
 const divs = document.createElement("div");
 
@@ -22,7 +22,6 @@ playBtn.addEventListener("click", () => {
   gameContainer.appendChild(para);
   para.textContent = "Choose your weapon";
   playerOptions();
-  // getComputerChoice();
 });
 
 //create function showOptions
@@ -37,7 +36,7 @@ function playerOptions() {
     gameContainer.appendChild(optionButton);
 
     optionButton.addEventListener("click", () => {
-      // if(!gameActive) return;
+      if (!gameActive) return;
       playGame(option, getComputerChoice());
     });
   }
@@ -78,12 +77,13 @@ function playGame(playerChoice, computerChoice) {
   if (playerScore == 3) {
     para.textContent = "Player Won the game";
     divs.textContent = "";
-
+    gameActive = false;
     reset();
   }
   if (computerScore == 3) {
     para.textContent = "Computer Won the game";
     divs.textContent = "";
+    gameActive = false;
     reset();
   }
   gameContainer.insertBefore(divs, para);
@@ -101,12 +101,17 @@ function reset() {
   resetBtn.addEventListener("click", () => {
     playerScore = 0;
     computerScore = 0;
+    gameActive = true;
 
     playerScores.textContent = "PLAYER SCORE: 0";
     computerScores.textContent = "COMPUTER SCORE: 0";
+
+    playerScores.style.display = "";
+    computerScores.style.display = "";
+
     resetBtn.remove();
     divs.textContent = "";
-    para.textContent = "";
+    para.textContent = "Choose your weapon";
     playerOptions();
   });
 }
