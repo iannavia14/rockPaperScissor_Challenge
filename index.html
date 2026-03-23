@@ -1,15 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RPS Challenge!</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rock, Paper, Scissors Game</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="main-container">
-        <h1>Sample</h1>
+
+  <div id="main-container">
+    <h1 id="title">Rock, Paper, Scissors</h1>
+    
+    <p id="instructions">Click the button below to start the game.</p>
+
+    <div id="game-container">
+      <h3 id="playerScores">PLAYER SCORE: 0</h3>
+      <h3 id="computerScores">COMPUTER SCORE: 0</h3>
+      <h4 id="result"></h4>
     </div>
-    <script src="rpsChallenge.js"></script>
+
+    <button id="playBtn">Play Game</button>
+  </div>
+
+  <script src="rpsChallenge.js"></script>
 </body>
 </html>
